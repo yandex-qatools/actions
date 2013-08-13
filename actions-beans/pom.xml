@@ -11,7 +11,7 @@
     <name>QATools Actions Beans</name>
 
     <properties>
-        <htmlelements.version>1.8.1</htmlelements.version>
+        <htmlelements.version>1.9</htmlelements.version>
     </properties>
 
     <dependencies>
