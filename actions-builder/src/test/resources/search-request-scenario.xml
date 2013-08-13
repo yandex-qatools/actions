@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><ns2:actions xmlns:ns2="urn:beans.actions.qatools.yandex.ru"><actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:LoadPageAction" url="http://www.yandex.ru"/><actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:TypeTextAction" text="Яндекс"><findBy xpath="//input[@class='b-form-input__input']"/></actions><actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:ClickAction"><findBy xpath="//input[@class='b-form-button__input']"/></actions><actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:AlertAcceptAction"/></ns2:actions>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:actions xmlns:ns2="urn:beans.actions.qatools.yandex.ru">
+	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:type="ns2:LoadPageAction" url="http://www.yandex.ru" />
+	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:type="ns2:TypeTextAction" text="Yandex">
+		<findBy xpath="//input[@class='b-form-input__input']" />
+	</actions>
+	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:type="ns2:ClickAction">
+		<findBy xpath="//input[@class='b-form-button__input']" />
+	</actions>
+	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:type="ns2:AlertAcceptAction" />
+</ns2:actions>

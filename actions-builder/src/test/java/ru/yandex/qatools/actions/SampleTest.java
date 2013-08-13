@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InOrder;
 import org.openqa.selenium.Alert;
@@ -27,7 +26,7 @@ public class SampleTest {
     private static final String PAGE_URL = "http://www.yandex.ru";
     private static final String SEARCH_INPUT_XPATH = "//input[@class='b-form-input__input']";
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";
-    private static final String TEST_REQUEST = "Яндекс";
+    private static final String TEST_REQUEST = "Yandex";
 
     private static WebDriver driver;
 
