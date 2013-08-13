@@ -26,6 +26,7 @@ public class SampleTest {
 
     private static WebDriver driver;
     private static File actionsFile = new File("search-request-scenario.xml");
+    
     private static WebDriver.TargetLocator targetLocatorMock;
     private static InOrder inOrder;
 
