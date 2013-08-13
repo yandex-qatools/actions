@@ -1,18 +1,23 @@
 package ru.yandex.qatools.actions;
 
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InOrder;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import ru.yandex.qatools.actions.beans.FindBy;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-
-import static org.mockito.Mockito.*;
 
 /**
  * @author Alexander Tolmachev starlight@yandex-team.ru
@@ -25,9 +30,7 @@ public class SampleTest {
     private static final String TEST_REQUEST = "Яндекс";
 
     private static WebDriver driver;
-    private static File actionsFile = new File("search-request-scenario.xml");
-    
-    private static WebDriver.TargetLocator targetLocatorMock;
+
     private static InOrder inOrder;
 
     @Before
@@ -61,18 +64,21 @@ public class SampleTest {
     }
 
     @Test
+    @Ignore
     public void createAndSerializeScenarioTest() {
         Actions actions = new Actions();
         actions.loadPage(PAGE_URL).
                 typeText(FindBy.xpath(SEARCH_INPUT_XPATH), TEST_REQUEST).
                 click(FindBy.xpath(SEARCH_BUTTON_XPATH)).
                 alertAccept();
+        File actionsFile = new File("search-request-scenario.xml");
         actions.write(actionsFile.getPath());
     }
 
     @Test
-    public void readAndPerformScenarioTest() throws FileNotFoundException {
+    public void readAndPerformScenarioTest() throws FileNotFoundException, URISyntaxException {
         Actions actions = new Actions();
+        File actionsFile = new File(this.getClass().getResource("/search-request-scenario.xml").toURI());
         actions.read(actionsFile.getPath()).build().perform(driver);
 
         inOrder.verify(driver).get(PAGE_URL);
