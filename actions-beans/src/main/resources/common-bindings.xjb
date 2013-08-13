@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               jaxb:version="2.1"
+               schemaLocation="common-actions.xsd">
+
+    <jaxb:bindings node="//*[@name='ActionReference']">
+        <jaxb:class ref="ru.yandex.qatools.actions.beans.Action"/>
+    </jaxb:bindings>
+
+</jaxb:bindings>

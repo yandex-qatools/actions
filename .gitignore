@@ -1,0 +1,19 @@
+#IDEA Files
+target
+output
+.idea
+*.iml
+
+#Compiled Sources
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse Files
+.project
+.classpath
+.settings
+

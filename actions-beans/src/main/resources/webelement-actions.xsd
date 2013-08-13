@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ns="urn:beans.actions.qatools.yandex.ru"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            xmlns:itn="http://jaxb2-commons.dev.java.net/basic/inheritance"
+            jaxb:extensionBindingPrefixes="itn"
+            targetNamespace="urn:beans.actions.qatools.yandex.ru"
+            version="2.1">
+
+
+    <xsd:complexType name="WebElementAction" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractWebElementAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="findBy" type="ns:FindBy"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AbstractFindByFactory" abstract="true"/>
+
+    <xsd:complexType name="ClickAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractClickAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="MouseOverAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractMouseOverAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="TypeTextAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractTypeTextAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="text" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ClearAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractClearAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="SelectListOptionAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractSelectListOptionAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="optionIndex" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="SelectRadioButtonAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractSelectRadioButtonAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="buttonIndex" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="SelectCheckBoxAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractSelectCheckBoxAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="DeselectCheckBoxAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractDeselectCheckBoxAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="WaitForElementAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractWaitForElementAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="MaxWaitTime" type="xsd:int" default="20"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="FindBy">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.FindByFactory</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="how" type="ns:How"/>
+        <xsd:attribute name="using" type="xsd:string"/>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="className" type="xsd:string"/>
+        <xsd:attribute name="css" type="xsd:string"/>
+        <xsd:attribute name="tagName" type="xsd:string"/>
+        <xsd:attribute name="linkText" type="xsd:string"/>
+        <xsd:attribute name="partialLinkText" type="xsd:string"/>
+        <xsd:attribute name="xpath" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="How">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CLASS_NAME"/>
+            <xsd:enumeration value="CSS"/>
+            <xsd:enumeration value="ID"/>
+            <xsd:enumeration value="ID_OR_NAME"/>
+            <xsd:enumeration value="LINK_TEXT"/>
+            <xsd:enumeration value="NAME"/>
+            <xsd:enumeration value="PARTIAL_LINK_TEXT"/>
+            <xsd:enumeration value="TAG_NAME"/>
+            <xsd:enumeration value="XPATH"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

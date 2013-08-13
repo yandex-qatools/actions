@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            xmlns:itn="http://jaxb2-commons.dev.java.net/basic/inheritance"
+            jaxb:extensionBindingPrefixes="itn"
+            jaxb:version="2.1"
+            xmlns:ns="urn:beans.actions.qatools.yandex.ru"
+            targetNamespace="urn:beans.actions.qatools.yandex.ru">
+
+    <xsd:element name="actions" type="ns:ActionSequence"/>
+
+    <xsd:complexType name="ActionSequence">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractActionSequence</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="actions" type="ns:ActionReference"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ActionReference" abstract="true"/>
+
+
+</xsd:schema>

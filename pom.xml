@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.yandex.qatools.actions</groupId>
+    <artifactId>actions</artifactId>
+    <version>2.2-SNAPSHOT</version>
+    <modules>
+        <module>actions-beans</module>
+        <module>actions-builder</module>
+    </modules>
+    <name>QATools Actions</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium.version>2.31.0</selenium.version>
+    </properties>
+
+    <ciManagement>
+        <system>Jenkins CI</system>
+        <url>http://ci.qatools.ru</url>
+    </ciManagement>
+
+    <scm>
+        <url>https://github.com/yandex-qatools/actions</url>
+        <connection>scm:git:git@github.comt:yandex-qatools/actions.git</connection>
+        <developerConnection>scm:git:git@github.comt:yandex-qatools/actions.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>starlight</id>
+            <name>Alexander Tolmachev</name>
+            <email>starlight@yandex-team.ru</email>
+        </developer>
+        <developer>
+            <id>eroshenkoam</id>
+            <name>Artem Eroshenko</name>
+            <email>eroshenkoam@yandex-team.ru</email>
+        </developer>
+        <developer>
+        	<id>artkoshelev</id>
+        	<name>Artem Koshelev</name>
+        	<email>artkoshelev@gmail.com</email>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

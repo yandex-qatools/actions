@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            xmlns:itn="http://jaxb2-commons.dev.java.net/basic/inheritance"
+            jaxb:extensionBindingPrefixes="itn"
+            targetNamespace="urn:beans.actions.qatools.yandex.ru"
+            version="2.1">
+
+    <xsd:complexType name="WebDriverAction" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractWebDriverAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="ExecuteJavaScriptAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractExecuteJavaScriptAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="javaScript" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="LoadPageAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractLoadPageAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="url" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="RefreshPageAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractRefreshPageAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="NavigateForwardAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractNavigateForwardAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="NavigateBackAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractNavigateBackAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResizeWindowAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractResizeWindowAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="width" type="xsd:int" use="required"/>
+        <xsd:attribute name="height" type="xsd:int" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="AlertAcceptAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractAlertAcceptAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="AlertDismissAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractAlertDismissAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+</xsd:schema>
