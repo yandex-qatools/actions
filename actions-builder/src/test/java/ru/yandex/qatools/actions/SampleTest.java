@@ -64,7 +64,6 @@ public class SampleTest {
     }
 
     @Test
-    @Ignore
     public void createAndSerializeScenarioTest() {
         Actions actions = new Actions();
         actions.loadPage(PAGE_URL).
