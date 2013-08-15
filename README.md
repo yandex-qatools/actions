@@ -12,7 +12,7 @@ Maven Dependencies
     <dependency>
         <groupId>ru.yandex.qatools.actions</groupId>
         <artifactId>actions-builder</artifactId>
-        <version>1.2</version>
+        <version>2.2</version>
     </dependency>
 ```
 
