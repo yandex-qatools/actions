@@ -31,7 +31,7 @@
     <scm>
         <url>https://github.com/yandex-qatools/actions/</url>
         <connection>scm:git:git@github.com:yandex-qatools/actions.git</connection>
-        <developerConnection>scm:git:git@github.comt:yandex-qatools/actions.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:yandex-qatools/actions.git</developerConnection>
     </scm>
 
     <developers>
