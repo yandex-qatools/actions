@@ -17,6 +17,12 @@
         <selenium.version>2.31.0</selenium.version>
     </properties>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <ciManagement>
         <system>Jenkins CI</system>
         <url>http://ci.qatools.ru</url>
