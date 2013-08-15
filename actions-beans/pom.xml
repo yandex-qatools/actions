@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>actions-beans</artifactId>
-    <name>QATools Actions Beans</name>
+    <name>Yandex QATools Actions Beans</name>
 
     <properties>
         <htmlelements.version>1.9</htmlelements.version>

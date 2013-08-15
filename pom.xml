@@ -9,13 +9,19 @@
         <module>actions-beans</module>
         <module>actions-builder</module>
     </modules>
-    <name>QATools Actions</name>
+    <name>Yandex QATools Actions</name>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>2.31.0</selenium.version>
     </properties>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 
     <ciManagement>
         <system>Jenkins CI</system>
