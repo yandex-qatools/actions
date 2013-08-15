@@ -4,7 +4,7 @@
 
     <groupId>ru.yandex.qatools.actions</groupId>
     <artifactId>actions</artifactId>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.2</version>
     <modules>
         <module>actions-beans</module>
         <module>actions-builder</module>
