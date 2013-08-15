@@ -9,7 +9,7 @@
         <module>actions-beans</module>
         <module>actions-builder</module>
     </modules>
-    <name>QATools Actions</name>
+    <name>Yandex QATools Actions</name>
     <packaging>pom</packaging>
 
     <properties>
