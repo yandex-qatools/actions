@@ -1,16 +1,10 @@
 package ru.yandex.qatools.actions;
 
-import java.io.*;
-import java.net.URL;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
+
+import javax.xml.bind.*;
+import java.io.*;
 
 /**
  * User: eroshenkoam, pazone
@@ -123,8 +117,17 @@ public class Actions {
 
     public Actions waitForElement(FindBy locator, int maxWaitTime) {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
+        waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
         sequence.append(waitForElementAction);
+        return this;
+    }
+
+    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime) {
+        WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
+        action.setFindBy(locator);
+        action.setMaxWaitTime(maxWaitTime);
+        sequence.append(action);
         return this;
     }
 

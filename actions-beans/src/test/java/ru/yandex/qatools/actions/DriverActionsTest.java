@@ -1,26 +1,13 @@
 package ru.yandex.qatools.actions;
 
-import static org.mockito.Mockito.*;
-import static ru.yandex.qatools.actions.ActionsTestData.BUTTON_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.NOT_SELECTED_CHECKBOX_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.RADIO_BUTTONS_NUMBER;
-import static ru.yandex.qatools.actions.ActionsTestData.RADIO_NAME;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECTED_CHECKBOX_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECT_OPTIONS_NUMBER;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECT_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.TEST_INDEX;
-import static ru.yandex.qatools.actions.ActionsTestData.TEST_TEXT;
-import static ru.yandex.qatools.actions.ActionsTestData.TEST_URL;
-import static ru.yandex.qatools.actions.ActionsTestData.TEXT_INPUT_XPATH;
-import static ru.yandex.qatools.actions.util.SelectorUtils.buildFindBy;
-
 import org.junit.Test;
-import org.openqa.selenium.*;
-
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.mockfactory.MockFactory;
-import ru.yandex.qatools.htmlelements.element.Radio;
-import ru.yandex.qatools.htmlelements.element.Select;
+
+import static org.mockito.Mockito.*;
+import static ru.yandex.qatools.actions.ActionsTestData.TEST_URL;
 
 /**
  * @author Alexander Tolmachev starlight@yandex-team.ru

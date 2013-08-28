@@ -99,6 +99,15 @@
         <xsd:attribute name="MaxWaitTime" type="xsd:int" default="20"/>
     </xsd:complexType>
 
+    <xsd:complexType name="WaitForElementToDisappearAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractWaitForElementToDisappearAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="MaxWaitTime" type="xsd:int" default="20"/>
+    </xsd:complexType>
+
     <xsd:complexType name="FindBy">
         <xsd:annotation>
             <xsd:appinfo>

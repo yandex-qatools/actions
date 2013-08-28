@@ -1,7 +1,10 @@
 package ru.yandex.qatools.actions;
 
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.mockfactory.MockFactory;
 import ru.yandex.qatools.htmlelements.element.Radio;
@@ -131,5 +134,35 @@ public class ElementActionsTest {
         waitForElement.perform(fakeDriver);
 
         verify(fakeDriver, times(waitForElement.getMaxWaitTime() * 1000 / WaitForElementAction.CHECK_INTERVAL)).findElement(waitForElement.buildBy());
+    }
+
+    @Test
+    public void waitForElementToDisappearTest() {
+        WebDriver fakeDriver = MockFactory.mockDriver();
+        WebElement fakeButton = MockFactory.mockButton(fakeDriver, BUTTON_XPATH);
+
+        when(fakeDriver.findElement(By.xpath(BUTTON_XPATH))).thenReturn(fakeButton).thenReturn(null);
+
+        WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
+        action.setFindBy(buildFindBy(How.XPATH, BUTTON_XPATH));
+        action.setMaxWaitTime(1);
+        action.perform(fakeDriver);
+
+        verify(fakeDriver, times(2)).findElement(action.buildBy());
+    }
+
+    @Test(expected = TimeoutException.class)
+    public void waitForNondisappearingElementToDisappearTest() {
+        WebDriver fakeDriver = MockFactory.mockDriver();
+        WebElement fakeButton = MockFactory.mockButton(fakeDriver, BUTTON_XPATH);
+
+        when(fakeDriver.findElement(By.xpath(BUTTON_XPATH))).thenReturn(fakeButton);
+
+        WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
+        action.setFindBy(buildFindBy(How.XPATH, BUTTON_XPATH));
+        action.setMaxWaitTime(1);
+        action.perform(fakeDriver);
+
+        verify(fakeDriver, times(action.getMaxWaitTime() * 1000 / WaitForElementAction.CHECK_INTERVAL)).findElement(action.buildBy());
     }
 }
