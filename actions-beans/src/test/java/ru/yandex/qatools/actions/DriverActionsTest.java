@@ -1,11 +1,11 @@
 package ru.yandex.qatools.actions;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 import static ru.yandex.qatools.actions.ActionsTestData.TEST_URL;
 
 import org.apache.commons.io.IOUtils;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
@@ -94,6 +94,7 @@ public class DriverActionsTest {
         verify(fakeDriver.switchTo().alert()).dismiss();
     }
 
+
     @Test
     public void takeScreenshotTest() throws IOException {
         WebDriver fakeDriver = Mockito.mock(WebDriver.class, withSettings().extraInterfaces(TakesScreenshot.class));
@@ -101,12 +102,13 @@ public class DriverActionsTest {
         BufferedImage img =
                 new BufferedImage(10, 10,
                         BufferedImage.TYPE_INT_ARGB);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(img, "jpg", baos);
+        File imgFile = new File("image.jpg");
+        imgFile.deleteOnExit();
+        ImageIO.write(img, "jpg", imgFile);
 
-        when(((TakesScreenshot) (fakeDriver)).getScreenshotAs(OutputType.BYTES)).thenReturn(baos.toByteArray());
+        when(((TakesScreenshot) (fakeDriver)).getScreenshotAs(OutputType.FILE)).thenReturn(imgFile);
 
-        final String screenshotPath = "some.jpg";
+        final String screenshotPath = "screenshot.jpg";
 
         TakeScreenshotAction takeScreenshotAction = new TakeScreenshotAction();
         takeScreenshotAction.setPath(screenshotPath);
@@ -115,8 +117,8 @@ public class DriverActionsTest {
         File screenshotFile = new File(screenshotPath);
         screenshotFile.deleteOnExit();
 
-        Assert.assertThat(IOUtils.toByteArray(new FileInputStream(screenshotFile)),
-                CoreMatchers.is(baos.toByteArray()));
+        assertThat(IOUtils.toByteArray(new FileInputStream(imgFile)),
+                is(IOUtils.toByteArray(new FileInputStream(screenshotFile))));
     }
 
 }
