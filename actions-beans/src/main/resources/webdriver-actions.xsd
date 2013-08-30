@@ -82,5 +82,14 @@
             </xsd:appinfo>
         </xsd:annotation>
     </xsd:complexType>
+    
+    <xsd:complexType name="TakeScreenshotAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractTakeScreenshotAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="path" type="xsd:string" use="required"/>
+    </xsd:complexType>
 
 </xsd:schema>

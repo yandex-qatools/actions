@@ -1,32 +1,28 @@
 package ru.yandex.qatools.actions;
 
 import static org.mockito.Mockito.*;
-import static ru.yandex.qatools.actions.ActionsTestData.BUTTON_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.NOT_SELECTED_CHECKBOX_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.RADIO_BUTTONS_NUMBER;
-import static ru.yandex.qatools.actions.ActionsTestData.RADIO_NAME;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECTED_CHECKBOX_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECT_OPTIONS_NUMBER;
-import static ru.yandex.qatools.actions.ActionsTestData.SELECT_XPATH;
-import static ru.yandex.qatools.actions.ActionsTestData.TEST_INDEX;
-import static ru.yandex.qatools.actions.ActionsTestData.TEST_TEXT;
 import static ru.yandex.qatools.actions.ActionsTestData.TEST_URL;
-import static ru.yandex.qatools.actions.ActionsTestData.TEXT_INPUT_XPATH;
-import static ru.yandex.qatools.actions.util.SelectorUtils.buildFindBy;
 
+import org.apache.commons.io.IOUtils;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.openqa.selenium.*;
 
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.mockfactory.MockFactory;
-import ru.yandex.qatools.htmlelements.element.Radio;
-import ru.yandex.qatools.htmlelements.element.Select;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 /**
  * @author Alexander Tolmachev starlight@yandex-team.ru
  *         Date: 05.09.12
  */
 public class DriverActionsTest {
+
     @Test
     public void loadPageTest() {
         WebDriver driver = MockFactory.mockDriver();
@@ -97,4 +93,30 @@ public class DriverActionsTest {
 
         verify(fakeDriver.switchTo().alert()).dismiss();
     }
+
+    @Test
+    public void takeScreenshotTest() throws IOException {
+        WebDriver fakeDriver = Mockito.mock(WebDriver.class, withSettings().extraInterfaces(TakesScreenshot.class));
+
+        BufferedImage img =
+                new BufferedImage(10, 10,
+                        BufferedImage.TYPE_INT_ARGB);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(img, "jpg", baos);
+
+        when(((TakesScreenshot) (fakeDriver)).getScreenshotAs(OutputType.BYTES)).thenReturn(baos.toByteArray());
+
+        final String screenshotPath = "some.jpg";
+
+        TakeScreenshotAction takeScreenshotAction = new TakeScreenshotAction();
+        takeScreenshotAction.setPath(screenshotPath);
+        takeScreenshotAction.perform(fakeDriver);
+
+        File screenshotFile = new File(screenshotPath);
+        screenshotFile.deleteOnExit();
+
+        Assert.assertThat(IOUtils.toByteArray(new FileInputStream(screenshotFile)),
+                CoreMatchers.is(baos.toByteArray()));
+    }
+
 }

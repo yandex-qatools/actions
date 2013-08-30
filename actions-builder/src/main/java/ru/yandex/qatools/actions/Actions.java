@@ -1,7 +1,6 @@
 package ru.yandex.qatools.actions;
 
 import java.io.*;
-import java.net.URL;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -125,6 +124,13 @@ public class Actions {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
         waitForElementAction.setMaxWaitTime(maxWaitTime);
         sequence.append(waitForElementAction);
+        return this;
+    }
+
+    public Actions takeScreenshot(String path) {
+        TakeScreenshotAction takeScreenshotAction = new TakeScreenshotAction();
+        takeScreenshotAction.setPath(path);
+        sequence.append(takeScreenshotAction);
         return this;
     }
 
