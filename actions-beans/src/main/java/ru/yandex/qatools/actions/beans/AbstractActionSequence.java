@@ -1,6 +1,5 @@
 package ru.yandex.qatools.actions.beans;
 
-import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.actions.listener.DefaultPrecessEventListener;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
