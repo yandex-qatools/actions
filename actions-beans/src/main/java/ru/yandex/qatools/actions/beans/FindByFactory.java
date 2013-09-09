@@ -6,7 +6,6 @@ package ru.yandex.qatools.actions.beans;
  *         4/22/13, 2:59 PM
  */
 
-@SuppressWarnings("UnusedDeclaration")
 public class FindByFactory {
 
     public static FindBy id(String value) {
