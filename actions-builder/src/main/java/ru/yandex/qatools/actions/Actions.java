@@ -10,16 +10,14 @@ import java.io.*;
  * User: eroshenkoam, pazone
  * Date: 9/2/12, 5:08 PM
  */
-@SuppressWarnings("unused")
 public class Actions {
-
     private ActionSequence sequence = new ActionSequence();
 
     public Actions() {
     }
 
     public Actions(ActionSequence actions) {
-        sequence.concat(actions);
+        sequence.append(actions);
     }
 
     public void setListener(ProcessEventListener listener) {
@@ -133,7 +131,7 @@ public class Actions {
 
 
     public Actions append(ActionSequence actions) {
-        sequence.concat(actions);
+        sequence.append(actions);
         return this;
     }
 
@@ -152,7 +150,7 @@ public class Actions {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             @SuppressWarnings("unchecked")
             JAXBElement<ActionSequence> actions = (JAXBElement<ActionSequence>) unmarshaller.unmarshal(reader);
-            sequence.concat(actions.getValue());
+            sequence.append(actions.getValue());
             return this;
         } catch (JAXBException e) {
             throw new RuntimeException(e);

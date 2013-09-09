@@ -20,8 +20,6 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="AbstractFindByFactory" abstract="true"/>
-
     <xsd:complexType name="ClickAction">
         <xsd:annotation>
             <xsd:appinfo>
