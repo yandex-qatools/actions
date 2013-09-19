@@ -1,5 +1,13 @@
 package ru.yandex.qatools.actions;
 
+import java.io.*;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
@@ -118,6 +126,13 @@ public class Actions {
         waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
         sequence.append(waitForElementAction);
+        return this;
+    }
+
+    public Actions takeScreenshot(String path) {
+        TakeScreenshotAction takeScreenshotAction = new TakeScreenshotAction();
+        takeScreenshotAction.setPath(path);
+        sequence.append(takeScreenshotAction);
         return this;
     }
 
