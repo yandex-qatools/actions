@@ -10,8 +10,13 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.openqa.selenium.*;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.mockfactory.MockFactory;
+
+import static org.mockito.Mockito.*;
+import static ru.yandex.qatools.actions.ActionsTestData.TEST_URL;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -6,7 +6,7 @@ import ru.yandex.qatools.actions.beans.Action;
  * @author Pavel Zorin pazone@yandex-team.ru
  *         4/22/13, 6:33 PM
  */
-public class DefaultPrecessEventListener implements ProcessEventListener {
+public class DefaultProcessEventListener implements ProcessEventListener {
     @Override
     public void beforePerform(Action action) {
 

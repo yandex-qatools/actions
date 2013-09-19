@@ -1,7 +1,6 @@
 package ru.yandex.qatools.actions.beans;
 
-import org.openqa.selenium.WebDriver;
-import ru.yandex.qatools.actions.listener.DefaultPrecessEventListener;
+import ru.yandex.qatools.actions.listener.DefaultProcessEventListener;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 public abstract class AbstractActionSequence<T> {
     public abstract List<Action<T>> getActions();
 
-    protected ProcessEventListener eventHandler = new DefaultPrecessEventListener();
+    protected ProcessEventListener eventHandler = new DefaultProcessEventListener();
 
     public void setListener(ProcessEventListener listener) {
         this.eventHandler = listener;
@@ -37,7 +36,7 @@ public abstract class AbstractActionSequence<T> {
         return getActions().add(action);
     }
 
-    public boolean concat(AbstractActionSequence<T> actionSequence) {
+    public boolean append(AbstractActionSequence<T> actionSequence) {
         return getActions().addAll(actionSequence.getActions());
     }
 

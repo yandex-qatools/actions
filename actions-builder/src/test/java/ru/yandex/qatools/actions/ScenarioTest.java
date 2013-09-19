@@ -22,7 +22,7 @@ import ru.yandex.qatools.actions.beans.FindBy;
  * @author Alexander Tolmachev starlight@yandex-team.ru
  *         Date: 05.09.12
  */
-public class SampleTest {
+public class ScenarioTest {
     private static final String PAGE_URL = "http://www.yandex.ru";
     private static final String SEARCH_INPUT_XPATH = "//input[@class='b-form-input__input']";
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";

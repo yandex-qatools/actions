@@ -20,8 +20,6 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="AbstractFindByFactory" abstract="true"/>
-
     <xsd:complexType name="ClickAction">
         <xsd:annotation>
             <xsd:appinfo>
@@ -94,6 +92,15 @@
         <xsd:annotation>
             <xsd:appinfo>
                 <itn:extends>ru.yandex.qatools.actions.beans.AbstractWaitForElementAction</itn:extends>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute name="MaxWaitTime" type="xsd:int" default="20"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="WaitForElementToDisappearAction">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:extends>ru.yandex.qatools.actions.beans.AbstractWaitForElementToDisappearAction</itn:extends>
             </xsd:appinfo>
         </xsd:annotation>
         <xsd:attribute name="MaxWaitTime" type="xsd:int" default="20"/>

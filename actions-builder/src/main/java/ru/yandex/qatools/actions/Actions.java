@@ -11,20 +11,21 @@ import javax.xml.bind.Unmarshaller;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
+import javax.xml.bind.*;
+import java.io.*;
+
 /**
  * User: eroshenkoam, pazone
  * Date: 9/2/12, 5:08 PM
  */
-@SuppressWarnings("unused")
 public class Actions {
-
     private ActionSequence sequence = new ActionSequence();
 
     public Actions() {
     }
 
     public Actions(ActionSequence actions) {
-        sequence.concat(actions);
+        sequence.append(actions);
     }
 
     public void setListener(ProcessEventListener listener) {
@@ -122,6 +123,7 @@ public class Actions {
 
     public Actions waitForElement(FindBy locator, int maxWaitTime) {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
+        waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
         sequence.append(waitForElementAction);
         return this;
@@ -134,9 +136,17 @@ public class Actions {
         return this;
     }
 
+    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime) {
+        WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
+        action.setFindBy(locator);
+        action.setMaxWaitTime(maxWaitTime);
+        sequence.append(action);
+        return this;
+    }
+
 
     public Actions append(ActionSequence actions) {
-        sequence.concat(actions);
+        sequence.append(actions);
         return this;
     }
 
@@ -155,7 +165,7 @@ public class Actions {
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             @SuppressWarnings("unchecked")
             JAXBElement<ActionSequence> actions = (JAXBElement<ActionSequence>) unmarshaller.unmarshal(reader);
-            sequence.concat(actions.getValue());
+            sequence.append(actions.getValue());
             return this;
         } catch (JAXBException e) {
             throw new RuntimeException(e);
