@@ -27,6 +27,7 @@ public class ScenarioTest {
     private static final String SEARCH_INPUT_XPATH = "//input[@class='b-form-input__input']";
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";
     private static final String TEST_REQUEST = "Yandex";
+    private static final String META_INFORMATION = "Meta Information";
 
     private static WebDriver driver;
 
@@ -68,6 +69,8 @@ public class ScenarioTest {
         actions.loadPage(PAGE_URL).
                 typeText(FindBy.xpath(SEARCH_INPUT_XPATH), TEST_REQUEST).
                 click(FindBy.xpath(SEARCH_BUTTON_XPATH)).
+                addMetaInformation(META_INFORMATION).
+                addMetaInformation(META_INFORMATION).
                 alertAccept();
         File actionsFile = new File("search-request-scenario.xml");
         actions.write(actionsFile.getPath());

@@ -13,6 +13,7 @@ import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
 import javax.xml.bind.*;
 import java.io.*;
+import java.util.List;
 
 /**
  * User: eroshenkoam, pazone
@@ -141,6 +142,29 @@ public class Actions {
         action.setFindBy(locator);
         action.setMaxWaitTime(maxWaitTime);
         sequence.append(action);
+        return this;
+    }
+
+
+    public Actions addMetaInformation(String metaInformation) {
+        int currentNumberOfActions = sequence.getActions().size();
+        if (currentNumberOfActions > 0) {
+            Action lastAction = sequence.getActions().get(currentNumberOfActions - 1);
+            if (lastAction instanceof AbstractWebElementAction) {
+                ((AbstractWebElementAction) lastAction).addMetaInformation(metaInformation);
+            }
+        }
+        return this;
+    }
+
+    public Actions addMetaInformation(List<String> metaInformation) {
+        int currentNumberOfActions = sequence.getActions().size();
+        if (currentNumberOfActions > 0) {
+            Action lastAction = sequence.getActions().get(currentNumberOfActions - 1);
+            if (lastAction instanceof AbstractWebElementAction) {
+                ((AbstractWebElementAction) lastAction).addMetaInformation(metaInformation);
+            }
+        }
         return this;
     }
 

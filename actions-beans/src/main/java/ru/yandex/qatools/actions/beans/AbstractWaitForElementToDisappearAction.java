@@ -31,6 +31,7 @@ public abstract class AbstractWaitForElementToDisappearAction extends WebElement
 
     @Override
     public String toString() {
-        return String.format("wait for '%s' to disappear maxWaitTime '%d'", buildBy(), getMaxWaitTime());
+        return String.format("wait for '%s'%s to disappear maxWaitTime '%d'",
+                buildBy(), metaInformationToString(), getMaxWaitTime());
     }
 }
