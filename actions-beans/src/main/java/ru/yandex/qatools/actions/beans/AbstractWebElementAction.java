@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.actions.util.SelectorUtils;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,12 +23,8 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
 
     public abstract List<String> getMetaInformation();
 
-    public void addMetaInformation(String metaInformation) {
-        getMetaInformation().add(metaInformation);
-    }
-
-    public void addMetaInformation(List<String> metaInformation) {
-        getMetaInformation().addAll(metaInformation);
+    public void addMetaInformation(String ... metaInformation) {
+        getMetaInformation().addAll(Arrays.asList(metaInformation));
     }
 
     @Override
@@ -44,9 +41,15 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
     }
 
     protected String metaInformationToString() {
-        return getMetaInformation().size() != 0
+        List<String> metaInformation = getMetaInformation();
+
+        if (null == metaInformation) {
+            return "";
+        } else {
+            return metaInformation.size() != 0
                 ? String.format(" with meta information %s", getMetaInformation())
                 : "";
+        }
     }
 
 }

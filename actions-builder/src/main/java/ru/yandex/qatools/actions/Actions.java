@@ -145,19 +145,7 @@ public class Actions {
         return this;
     }
 
-
-    public Actions addMetaInformation(String metaInformation) {
-        int currentNumberOfActions = sequence.getActions().size();
-        if (currentNumberOfActions > 0) {
-            Action lastAction = sequence.getActions().get(currentNumberOfActions - 1);
-            if (lastAction instanceof AbstractWebElementAction) {
-                ((AbstractWebElementAction) lastAction).addMetaInformation(metaInformation);
-            }
-        }
-        return this;
-    }
-
-    public Actions addMetaInformation(List<String> metaInformation) {
+    public Actions addMetaInformation(String ... metaInformation) {
         int currentNumberOfActions = sequence.getActions().size();
         if (currentNumberOfActions > 0) {
             Action lastAction = sequence.getActions().get(currentNumberOfActions - 1);
