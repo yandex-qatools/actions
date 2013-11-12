@@ -68,9 +68,7 @@ public class ScenarioTest {
         Actions actions = new Actions();
         actions.loadPage(PAGE_URL).
                 typeText(FindBy.xpath(SEARCH_INPUT_XPATH), TEST_REQUEST).
-                click(FindBy.xpath(SEARCH_BUTTON_XPATH)).
-                addMetaInformation(META_INFORMATION).
-                addMetaInformation(META_INFORMATION).
+                click(FindBy.xpath(SEARCH_BUTTON_XPATH), META_INFORMATION, META_INFORMATION).
                 alertAccept();
         File actionsFile = new File("search-request-scenario.xml");
         actions.write(actionsFile.getPath());

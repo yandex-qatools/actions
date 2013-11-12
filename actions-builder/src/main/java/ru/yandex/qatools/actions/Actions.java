@@ -79,53 +79,60 @@ public class Actions {
         return this;
     }
 
-    public Actions mouseOver(FindBy locator) {
+    public Actions mouseOver(FindBy locator, String ... description) {
         MouseOverAction mouseOverAction = new MouseOverAction();
         mouseOverAction.setFindBy(locator);
+        mouseOverAction.addMetaInformation(description);
         sequence.append(mouseOverAction);
         return this;
     }
 
-    public Actions click(FindBy locator) {
+    public Actions click(FindBy locator, String ... description) {
         ClickAction clickAction = new ClickAction();
         clickAction.setFindBy(locator);
+        clickAction.addMetaInformation(description);
         sequence.append(clickAction);
         return this;
     }
 
-    public Actions typeText(FindBy locator, String text) {
+    public Actions typeText(FindBy locator, String text, String ... description) {
         TypeTextAction typeText = new TypeTextAction();
         typeText.setFindBy(locator);
         typeText.setText(text);
+        typeText.addMetaInformation(description);
         sequence.append(typeText);
         return this;
     }
 
-    public Actions clearText(FindBy locator) {
+    public Actions clearText(FindBy locator, String ... description) {
         ClearAction clear = new ClearAction();
         clear.setFindBy(locator);
+        clear.addMetaInformation(description);
         sequence.append(clear);
         return this;
     }
 
-    public Actions selectCheckbox(FindBy locator) {
+    public Actions selectCheckbox(FindBy locator, String ... description) {
         SelectCheckBoxAction selectCheckBox = new SelectCheckBoxAction();
         selectCheckBox.setFindBy(locator);
+        selectCheckBox.addMetaInformation(description);
         sequence.append(selectCheckBox);
         return this;
     }
 
-    public Actions deselectCheckbox(FindBy locator) {
+    public Actions deselectCheckbox(FindBy locator, String ... description) {
         DeselectCheckBoxAction deselectCheckBox = new DeselectCheckBoxAction();
         deselectCheckBox.setFindBy(locator);
+        deselectCheckBox.addMetaInformation(description);
         sequence.append(deselectCheckBox);
         return this;
     }
 
-    public Actions waitForElement(FindBy locator, int maxWaitTime) {
+    public Actions waitForElement(FindBy locator, int maxWaitTime, String ... description) {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
         waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
+        waitForElementAction.addMetaInformation(description);
         sequence.append(waitForElementAction);
         return this;
     }
@@ -137,22 +144,12 @@ public class Actions {
         return this;
     }
 
-    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime) {
+    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime, String ... description) {
         WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
         action.setFindBy(locator);
         action.setMaxWaitTime(maxWaitTime);
+        action.addMetaInformation(description);
         sequence.append(action);
-        return this;
-    }
-
-    public Actions addMetaInformation(String ... metaInformation) {
-        int currentNumberOfActions = sequence.getActions().size();
-        if (currentNumberOfActions > 0) {
-            Action lastAction = sequence.getActions().get(currentNumberOfActions - 1);
-            if (lastAction instanceof AbstractWebElementAction) {
-                ((AbstractWebElementAction) lastAction).addMetaInformation(metaInformation);
-            }
-        }
         return this;
     }
 

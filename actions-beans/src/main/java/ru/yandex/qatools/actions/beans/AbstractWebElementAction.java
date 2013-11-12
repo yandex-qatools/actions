@@ -1,5 +1,7 @@
 package ru.yandex.qatools.actions.beans;
 
+import com.google.common.base.Joiner;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.openqa.selenium.By;
@@ -43,13 +45,9 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
     protected String metaInformationToString() {
         List<String> metaInformation = getMetaInformation();
 
-        if (null == metaInformation) {
-            return "";
-        } else {
-            return metaInformation.size() != 0
-                ? String.format(" with meta information %s", getMetaInformation())
-                : "";
-        }
+        return CollectionUtils.isEmpty(metaInformation)
+                ? ""
+                : String.format(" with meta information [%s]", Joiner.on(", ").join(metaInformation));
     }
 
 }
