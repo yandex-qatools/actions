@@ -3,10 +3,15 @@ package ru.yandex.qatools.actions;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +21,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import ru.yandex.qatools.actions.beans.AbstractWebElementAction;
+import ru.yandex.qatools.actions.beans.Action;
 import ru.yandex.qatools.actions.beans.FindBy;
 
 /**
@@ -28,6 +35,7 @@ public class ScenarioTest {
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";
     private static final String TEST_REQUEST = "Yandex";
     private static final String META_INFORMATION = "Meta Information";
+    private static final List<String> EXPECTED_META_INFORMATION_LIST = Arrays.asList(META_INFORMATION, META_INFORMATION);
 
     private static WebDriver driver;
 
@@ -84,5 +92,10 @@ public class ScenarioTest {
         inOrder.verify(driver.findElement(By.xpath(SEARCH_INPUT_XPATH))).sendKeys(TEST_REQUEST);
         inOrder.verify(driver.findElement(By.xpath(SEARCH_BUTTON_XPATH))).click();
         inOrder.verify(driver.switchTo().alert()).accept();
+
+        List<Action> readActions = actions.build().getActions();
+        assertEquals(4, readActions.size());
+        assertTrue(readActions.get(2) instanceof AbstractWebElementAction);
+        assertEquals(EXPECTED_META_INFORMATION_LIST, ((AbstractWebElementAction) readActions.get(2)).getMetaInformation());
     }
 }

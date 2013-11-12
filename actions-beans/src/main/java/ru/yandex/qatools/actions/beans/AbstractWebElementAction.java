@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.yandex.qatools.actions.util.ListUtils;
 import ru.yandex.qatools.actions.util.SelectorUtils;
 
 import java.util.Arrays;
@@ -26,7 +27,11 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
     public abstract List<String> getMetaInformation();
 
     public void addMetaInformation(String ... metaInformation) {
-        getMetaInformation().addAll(Arrays.asList(metaInformation));
+        List<String> currentMetaInformation = getMetaInformation();
+
+        if (!ListUtils.isNull(currentMetaInformation)) {
+            currentMetaInformation.addAll(Arrays.asList(metaInformation));
+        }
     }
 
     @Override

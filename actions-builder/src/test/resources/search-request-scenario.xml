@@ -9,6 +9,8 @@
 	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:type="ns2:ClickAction">
 		<findBy xpath="//input[@class='b-form-button__input']" />
+		<metaInformation>Meta Information</metaInformation>
+		<metaInformation>Meta Information</metaInformation>
 	</actions>
 	<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:type="ns2:AlertAcceptAction" />
