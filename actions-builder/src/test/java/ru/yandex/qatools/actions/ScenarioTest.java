@@ -3,8 +3,10 @@ package ru.yandex.qatools.actions;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -94,8 +96,10 @@ public class ScenarioTest {
         inOrder.verify(driver.switchTo().alert()).accept();
 
         List<Action> readActions = actions.build().getActions();
-        assertEquals(4, readActions.size());
-        assertTrue(readActions.get(2) instanceof AbstractWebElementAction);
-        assertEquals(EXPECTED_META_INFORMATION_LIST, ((AbstractWebElementAction) readActions.get(2)).getMetaInformation());
+        assertThat("Check the number of deserialized actions", readActions, hasSize(4));
+        assertThat("Check that the third action can contain some meta information",
+                readActions.get(2), instanceOf(AbstractWebElementAction.class));
+        assertThat("Check read meta information",
+                ((AbstractWebElementAction) readActions.get(2)).getMetaInformation(), is(EXPECTED_META_INFORMATION_LIST));
     }
 }
