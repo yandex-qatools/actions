@@ -11,10 +11,6 @@ import javax.xml.bind.Unmarshaller;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
-import javax.xml.bind.*;
-import java.io.*;
-import java.util.List;
-
 /**
  * User: eroshenkoam, pazone
  * Date: 9/2/12, 5:08 PM
@@ -82,7 +78,7 @@ public class Actions {
     public Actions mouseOver(FindBy locator, String ... description) {
         MouseOverAction mouseOverAction = new MouseOverAction();
         mouseOverAction.setFindBy(locator);
-        mouseOverAction.addMetaInformation(description);
+        mouseOverAction.addDescription(description);
         sequence.append(mouseOverAction);
         return this;
     }
@@ -90,7 +86,7 @@ public class Actions {
     public Actions click(FindBy locator, String ... description) {
         ClickAction clickAction = new ClickAction();
         clickAction.setFindBy(locator);
-        clickAction.addMetaInformation(description);
+        clickAction.addDescription(description);
         sequence.append(clickAction);
         return this;
     }
@@ -99,7 +95,7 @@ public class Actions {
         TypeTextAction typeText = new TypeTextAction();
         typeText.setFindBy(locator);
         typeText.setText(text);
-        typeText.addMetaInformation(description);
+        typeText.addDescription(description);
         sequence.append(typeText);
         return this;
     }
@@ -107,7 +103,7 @@ public class Actions {
     public Actions clearText(FindBy locator, String ... description) {
         ClearAction clear = new ClearAction();
         clear.setFindBy(locator);
-        clear.addMetaInformation(description);
+        clear.addDescription(description);
         sequence.append(clear);
         return this;
     }
@@ -115,7 +111,7 @@ public class Actions {
     public Actions selectCheckbox(FindBy locator, String ... description) {
         SelectCheckBoxAction selectCheckBox = new SelectCheckBoxAction();
         selectCheckBox.setFindBy(locator);
-        selectCheckBox.addMetaInformation(description);
+        selectCheckBox.addDescription(description);
         sequence.append(selectCheckBox);
         return this;
     }
@@ -123,7 +119,7 @@ public class Actions {
     public Actions deselectCheckbox(FindBy locator, String ... description) {
         DeselectCheckBoxAction deselectCheckBox = new DeselectCheckBoxAction();
         deselectCheckBox.setFindBy(locator);
-        deselectCheckBox.addMetaInformation(description);
+        deselectCheckBox.addDescription(description);
         sequence.append(deselectCheckBox);
         return this;
     }
@@ -132,7 +128,7 @@ public class Actions {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
         waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
-        waitForElementAction.addMetaInformation(description);
+        waitForElementAction.addDescription(description);
         sequence.append(waitForElementAction);
         return this;
     }
@@ -148,7 +144,7 @@ public class Actions {
         WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
         action.setFindBy(locator);
         action.setMaxWaitTime(maxWaitTime);
-        action.addMetaInformation(description);
+        action.addDescription(description);
         sequence.append(action);
         return this;
     }

@@ -18,6 +18,6 @@ public abstract class AbstractDeselectCheckBoxAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Unset checkbox '%s'%s", buildBy(), metaInformationToString());
+        return String.format("Unset checkbox '%s'%s", buildBy(), descriptionToString());
     }
 }

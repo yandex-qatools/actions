@@ -16,6 +16,6 @@ public abstract class AbstractMouseOverAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Move cursor to element '%s'%s", buildBy(), metaInformationToString());
+        return String.format("Move cursor to element '%s'%s", buildBy(), descriptionToString());
     }
 }

@@ -22,6 +22,6 @@ public abstract class AbstractSelectRadioButtonAction extends WebElementAction {
     @Override
     public String toString() {
         return String.format("Select radio button number %d from radio group '%s'%s",
-                getButtonIndex(), buildBy(), metaInformationToString());
+                getButtonIndex(), buildBy(), descriptionToString());
     }
 }

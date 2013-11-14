@@ -18,6 +18,6 @@ public abstract class AbstractWaitForElementAction extends WebElementAction {
     @Override
     public String toString() {
         return String.format("wait for '%s'%s maxWaitTime '%d'",
-                buildBy(), metaInformationToString(), getMaxWaitTime());
+                buildBy(), descriptionToString(), getMaxWaitTime());
     }
 }

@@ -16,6 +16,6 @@ public abstract class AbstractClickAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Click on element at element '%s'%s", buildBy(), metaInformationToString());
+        return String.format("Click on element at element '%s'%s", buildBy(), descriptionToString());
     }
 }

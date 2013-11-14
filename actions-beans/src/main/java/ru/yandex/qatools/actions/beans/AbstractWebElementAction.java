@@ -24,13 +24,13 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
 
     public abstract FindBy getFindBy();
 
-    public abstract List<String> getMetaInformation();
+    public abstract List<String> getDescription();
 
-    public void addMetaInformation(String ... metaInformation) {
-        List<String> currentMetaInformation = getMetaInformation();
+    public void addDescription(String ... description) {
+        List<String> currentDescription = getDescription();
 
-        if (!ListUtils.isNull(currentMetaInformation)) {
-            currentMetaInformation.addAll(Arrays.asList(metaInformation));
+        if (!ListUtils.isNull(currentDescription)) {
+            currentDescription.addAll(Arrays.asList(description));
         }
     }
 
@@ -47,12 +47,12 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
         return builder.toHashCode();
     }
 
-    protected String metaInformationToString() {
-        List<String> metaInformation = getMetaInformation();
+    protected String descriptionToString() {
+        List<String> description = getDescription();
 
-        return CollectionUtils.isEmpty(metaInformation)
+        return CollectionUtils.isEmpty(description)
                 ? ""
-                : String.format(" with meta information [%s]", Joiner.on(", ").join(metaInformation));
+                : String.format(" with meta information [%s]", Joiner.on(", ").join(description));
     }
 
 }
