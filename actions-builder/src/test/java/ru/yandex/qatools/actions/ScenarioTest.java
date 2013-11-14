@@ -36,8 +36,9 @@ public class ScenarioTest {
     private static final String SEARCH_INPUT_XPATH = "//input[@class='b-form-input__input']";
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";
     private static final String TEST_REQUEST = "Yandex";
-    private static final String DESCRIPTION = "Description";
-    private static final List<String> EXPECTED_DESCRIPTION = Arrays.asList(DESCRIPTION, DESCRIPTION);
+    private static final String DESCRIPTION_1 = "Description 1";
+    private static final String DESCRIPTION_2 = "Description 2";
+    private static final List<String> EXPECTED_DESCRIPTION = Arrays.asList(DESCRIPTION_1, DESCRIPTION_2);
 
     private static WebDriver driver;
 
@@ -78,7 +79,7 @@ public class ScenarioTest {
         Actions actions = new Actions();
         actions.loadPage(PAGE_URL).
                 typeText(FindBy.xpath(SEARCH_INPUT_XPATH), TEST_REQUEST).
-                click(FindBy.xpath(SEARCH_BUTTON_XPATH), DESCRIPTION, DESCRIPTION).
+                click(FindBy.xpath(SEARCH_BUTTON_XPATH), DESCRIPTION_1, DESCRIPTION_2).
                 alertAccept();
         File actionsFile = new File("search-request-scenario.xml");
         actions.write(actionsFile.getPath());
@@ -97,9 +98,9 @@ public class ScenarioTest {
 
         List<Action> readActions = actions.build().getActions();
         assertThat("Check the number of deserialized actions", readActions, hasSize(4));
-        assertThat("Check that the third action can contain some meta information",
+        assertThat("Check that the third action can contain description",
                 readActions.get(2), instanceOf(AbstractWebElementAction.class));
-        assertThat("Check read meta information",
+        assertThat("Check read description",
                 ((AbstractWebElementAction) readActions.get(2)).getDescription(), is(EXPECTED_DESCRIPTION));
     }
 }

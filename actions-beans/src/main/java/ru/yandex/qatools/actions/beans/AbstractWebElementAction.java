@@ -52,7 +52,7 @@ public abstract class AbstractWebElementAction extends Action<WebDriver> {
 
         return CollectionUtils.isEmpty(description)
                 ? ""
-                : String.format(" with meta information [%s]", Joiner.on(", ").join(description));
+                : String.format(" with description [%s]", Joiner.on(", ").join(description));
     }
 
 }
