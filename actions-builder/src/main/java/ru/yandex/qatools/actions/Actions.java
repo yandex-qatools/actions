@@ -11,9 +11,6 @@ import javax.xml.bind.Unmarshaller;
 import ru.yandex.qatools.actions.beans.*;
 import ru.yandex.qatools.actions.listener.ProcessEventListener;
 
-import javax.xml.bind.*;
-import java.io.*;
-
 /**
  * User: eroshenkoam, pazone
  * Date: 9/2/12, 5:08 PM
@@ -78,53 +75,60 @@ public class Actions {
         return this;
     }
 
-    public Actions mouseOver(FindBy locator) {
+    public Actions mouseOver(FindBy locator, String ... description) {
         MouseOverAction mouseOverAction = new MouseOverAction();
         mouseOverAction.setFindBy(locator);
+        mouseOverAction.addDescription(description);
         sequence.append(mouseOverAction);
         return this;
     }
 
-    public Actions click(FindBy locator) {
+    public Actions click(FindBy locator, String ... description) {
         ClickAction clickAction = new ClickAction();
         clickAction.setFindBy(locator);
+        clickAction.addDescription(description);
         sequence.append(clickAction);
         return this;
     }
 
-    public Actions typeText(FindBy locator, String text) {
+    public Actions typeText(FindBy locator, String text, String ... description) {
         TypeTextAction typeText = new TypeTextAction();
         typeText.setFindBy(locator);
         typeText.setText(text);
+        typeText.addDescription(description);
         sequence.append(typeText);
         return this;
     }
 
-    public Actions clearText(FindBy locator) {
+    public Actions clearText(FindBy locator, String ... description) {
         ClearAction clear = new ClearAction();
         clear.setFindBy(locator);
+        clear.addDescription(description);
         sequence.append(clear);
         return this;
     }
 
-    public Actions selectCheckbox(FindBy locator) {
+    public Actions selectCheckbox(FindBy locator, String ... description) {
         SelectCheckBoxAction selectCheckBox = new SelectCheckBoxAction();
         selectCheckBox.setFindBy(locator);
+        selectCheckBox.addDescription(description);
         sequence.append(selectCheckBox);
         return this;
     }
 
-    public Actions deselectCheckbox(FindBy locator) {
+    public Actions deselectCheckbox(FindBy locator, String ... description) {
         DeselectCheckBoxAction deselectCheckBox = new DeselectCheckBoxAction();
         deselectCheckBox.setFindBy(locator);
+        deselectCheckBox.addDescription(description);
         sequence.append(deselectCheckBox);
         return this;
     }
 
-    public Actions waitForElement(FindBy locator, int maxWaitTime) {
+    public Actions waitForElement(FindBy locator, int maxWaitTime, String ... description) {
         WaitForElementAction waitForElementAction = new WaitForElementAction();
         waitForElementAction.setFindBy(locator);
         waitForElementAction.setMaxWaitTime(maxWaitTime);
+        waitForElementAction.addDescription(description);
         sequence.append(waitForElementAction);
         return this;
     }
@@ -136,10 +140,11 @@ public class Actions {
         return this;
     }
 
-    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime) {
+    public Actions waitForElementToDisappear(FindBy locator, int maxWaitTime, String ... description) {
         WaitForElementToDisappearAction action = new WaitForElementToDisappearAction();
         action.setFindBy(locator);
         action.setMaxWaitTime(maxWaitTime);
+        action.addDescription(description);
         sequence.append(action);
         return this;
     }

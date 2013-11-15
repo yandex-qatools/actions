@@ -18,6 +18,6 @@ public abstract class AbstractSelectCheckBoxAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Set checkbox '%s'", buildBy());
+        return String.format("Set checkbox '%s'%s", buildBy(), descriptionToString());
     }
 }

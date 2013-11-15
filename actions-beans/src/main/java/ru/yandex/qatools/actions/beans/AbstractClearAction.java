@@ -19,6 +19,6 @@ public abstract class AbstractClearAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Clear text input in element '%s'", buildBy());
+        return String.format("Clear text input in element '%s'%s", buildBy(), descriptionToString());
     }
 }

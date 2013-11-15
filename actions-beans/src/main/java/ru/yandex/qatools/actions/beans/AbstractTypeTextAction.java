@@ -21,6 +21,7 @@ public abstract class AbstractTypeTextAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Type text '%s' in text input '%s'", getText(), buildBy());
+        return String.format("Type text '%s' in text input '%s'%s",
+                getText(), buildBy(), descriptionToString());
     }
 }

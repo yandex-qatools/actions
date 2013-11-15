@@ -17,6 +17,7 @@
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="findBy" type="ns:FindBy"/>
+            <xsd:element name="description" type="xsd:string" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 

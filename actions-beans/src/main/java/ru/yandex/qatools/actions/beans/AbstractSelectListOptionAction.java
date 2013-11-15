@@ -21,7 +21,7 @@ public abstract class AbstractSelectListOptionAction extends WebElementAction {
 
     @Override
     public String toString() {
-        return String.format("Select list option number %s from selection list '%s'",
-                getOptionIndex(), buildBy());
+        return String.format("Select list option number %s from selection list '%s'%s",
+                getOptionIndex(), buildBy(), descriptionToString());
     }
 }

@@ -3,10 +3,17 @@ package ru.yandex.qatools.actions;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +23,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import ru.yandex.qatools.actions.beans.AbstractWebElementAction;
+import ru.yandex.qatools.actions.beans.Action;
 import ru.yandex.qatools.actions.beans.FindBy;
 
 /**
@@ -27,6 +36,9 @@ public class ScenarioTest {
     private static final String SEARCH_INPUT_XPATH = "//input[@class='b-form-input__input']";
     private static final String SEARCH_BUTTON_XPATH = "//input[@class='b-form-button__input']";
     private static final String TEST_REQUEST = "Yandex";
+    private static final String DESCRIPTION_1 = "Description 1";
+    private static final String DESCRIPTION_2 = "Description 2";
+    private static final List<String> EXPECTED_DESCRIPTION = Arrays.asList(DESCRIPTION_1, DESCRIPTION_2);
 
     private static WebDriver driver;
 
@@ -67,7 +79,7 @@ public class ScenarioTest {
         Actions actions = new Actions();
         actions.loadPage(PAGE_URL).
                 typeText(FindBy.xpath(SEARCH_INPUT_XPATH), TEST_REQUEST).
-                click(FindBy.xpath(SEARCH_BUTTON_XPATH)).
+                click(FindBy.xpath(SEARCH_BUTTON_XPATH), DESCRIPTION_1, DESCRIPTION_2).
                 alertAccept();
         File actionsFile = new File("search-request-scenario.xml");
         actions.write(actionsFile.getPath());
@@ -83,5 +95,12 @@ public class ScenarioTest {
         inOrder.verify(driver.findElement(By.xpath(SEARCH_INPUT_XPATH))).sendKeys(TEST_REQUEST);
         inOrder.verify(driver.findElement(By.xpath(SEARCH_BUTTON_XPATH))).click();
         inOrder.verify(driver.switchTo().alert()).accept();
+
+        List<Action> readActions = actions.build().getActions();
+        assertThat("Check the number of deserialized actions", readActions, hasSize(4));
+        assertThat("Check that the third action can contain description",
+                readActions.get(2), instanceOf(AbstractWebElementAction.class));
+        assertThat("Check read description",
+                ((AbstractWebElementAction) readActions.get(2)).getDescription(), is(EXPECTED_DESCRIPTION));
     }
 }
