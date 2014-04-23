@@ -1,12 +1,13 @@
 Actions
 =======
 
-Библиотека для работы с пользовательскими действиями в браузере. Позволяет создавать различные действия, 
-выполнять их через Selemium WebDriver, объединять их в тестовые сценарии, а также сериализовать тестовые сценарии в XML.
+Library for user actions in the browser.
+Allows you to create various actions to implement them through Selemium WebDriver,
+combine them into test scenarios and serialize test scripts to XML.
 
 Maven Dependencies
 ------------------
-Для использования библиотеки требуются следующие зависимости:
+To use library add the following dependencies:
 
 ```xml
     <dependency>
@@ -18,7 +19,7 @@ Maven Dependencies
 
 Getting Started
 ---------------
-Создание последовательности действий:
+Creating a sequence of actions:
 
 ```java
     Actions actions = new Actions();
@@ -27,14 +28,14 @@ Getting Started
             click("//input[@class='b-form-button__input']");
 ```
 
-Выполнение созданного сценария:
+Execute the scenario:
 
 ```java
     WebDriver driver = BrowserFactory.webdriver();
     actions.build().perform(driver);
 ```
     
-Запись в XML:
+Record in XML:
 
 ```java
     Actions actions = new Actions();
@@ -44,7 +45,7 @@ Getting Started
     actions.write("search-request-scenario.xml");
 ```
 
-Чтение сериализованных сценариев из XML:
+Reading serialized scenarios from XML:
 
 ```java
     Actions actions = new Actions();
